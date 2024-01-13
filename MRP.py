@@ -315,6 +315,7 @@ def calculate_mrp_values_for_periods():
     conn.commit()
     conn.close()
 
+"""
 from tabulate import tabulate
 
 def print_mrp_for_part_a():
@@ -331,7 +332,7 @@ def print_mrp_for_part_a():
 
     finally:
         conn.close()
-
+"""
 
 def test_mrp():
     conn = sqlite3.connect('MRP_database.db')
@@ -344,7 +345,7 @@ def test_mrp():
             create_tables()
         insert_sample_data()
         calculate_mrp_values_for_periods()
-        print_mrp_for_part_a()
+        #print_mrp_for_part_a()
 
 
     finally:
