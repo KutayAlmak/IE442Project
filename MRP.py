@@ -316,6 +316,34 @@ def calculate_mrp_values_for_periods():
     conn.close()
 
 
+from prettytable import PrettyTable
+
+def print_mrp_for_part_a():
+    # Create a pretty table
+    table = PrettyTable()
+    table.field_names = ["PartID","PeriodID", "GrossRequirements", "ScheduledReceipts", "EndingInventory",
+                         "NetRequirements", "PlannedOrderRelease", "PlannedOrderReceipts"]
+
+    # Fetch MRP for Part A
+    conn = sqlite3.connect('MRP_database.db')
+    cursor = conn.cursor()
+
+    try:
+        # Execute SQL to fetch MRP for Part A
+        cursor.execute("SELECT * FROM MRP WHERE PartID = 1 ORDER BY PeriodID")
+        mrp_results = cursor.fetchall()
+
+        for result in mrp_results:
+            table.add_row(result)
+
+    finally:
+        # Close connection
+        conn.close()
+
+    # Print the table
+    print("MRP for Part B:")
+    print(table)
+
 
 def test_mrp():
     conn = sqlite3.connect('MRP_database.db')
@@ -328,7 +356,7 @@ def test_mrp():
             create_tables()
         insert_sample_data()
         calculate_mrp_values_for_periods()
-        #print_mrp_for_part_a()
+        print_mrp_for_part_a()
 
 
     finally:
