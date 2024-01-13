@@ -315,24 +315,7 @@ def calculate_mrp_values_for_periods():
     conn.commit()
     conn.close()
 
-"""
-from tabulate import tabulate
 
-def print_mrp_for_part_a():
-    conn = sqlite3.connect('MRP_database.db')
-    cursor = conn.cursor()
-
-    try:
-        cursor.execute("SELECT * FROM MRP WHERE PartID = 7 ORDER BY PeriodID")
-        mrp_results = cursor.fetchall()
-
-        headers = ["PeriodID", "GrossRequirements", "ScheduledReceipts", "EndingInventory",
-                   "NetRequirements", "PlannedOrderRelease", "PlannedOrderReceipts"]
-        print(tabulate(mrp_results, headers=headers, tablefmt="grid"))
-
-    finally:
-        conn.close()
-"""
 
 def test_mrp():
     conn = sqlite3.connect('MRP_database.db')
